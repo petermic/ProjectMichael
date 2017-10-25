@@ -37,19 +37,22 @@ void mcqa(){
 		"Dchi2cl_bkg",
 		"Dalpha_sig",
 		"Dalpha_bkg",
-		"Dtrk1Pt_sig",
-		"Dtrk1Pt_bkg",
-		"Dtrk2Pt_sig",
-		"Dtrk2Pt_bkg",
-		"Dtrk1Eta_sig",
-		"Dtrk1Eta_bkg",
-		"Dtrk2Eta_sig",
-		"Dtrk2Eta_bkg",
+		"Dtrk1_Pt_sig",
+		"Dtrk1_Pt_bkg",
+		"Dtrk2_Pt_sig",
+		"Dtrk2_Pt_bkg",
+		"Dtrk1_Eta_sig",
+		"Dtrk1_Eta_bkg",
+		"Dtrk2_Eta_sig",
+		"Dtrk2_Eta_bkg",
 		"fhRecoJetPt",
 		"fhRecoJetEta",
 		"fhRecoJetPhi"});
 	std::vector<TH1F*> fhist;
-	for(int i=0;i<fplots.size();i++) fhist.push_back((TH1F*)f->Get(fplots[i]));
+	for(int i=0;i<fplots.size();i++) {
+		fhist.push_back((TH1F*)f->Get(fplots[i]));
+		cout << i << " " << fplots[i] << " " << fhist[i] << endl;
+	}
 
 	for(int i=0;i<fhist.size();i++){		
 		TH1F *h = fhist[i];
@@ -131,6 +134,6 @@ void mcqa(){
 	}
 	fulld->SaveAs("d_reco.gif");
 	dtrk->SaveAs("d_trk.gif");
-	pv->SaveAs("PVdist.gif");
+	pv->SaveAs("PVBS.gif");
 	jets->SaveAs("jets.gif");
 }

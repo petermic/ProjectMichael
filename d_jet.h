@@ -27,7 +27,30 @@ private :
   int fisData;
 public :
 
-   TH1F           *fhRecoJetPt;   
+   TH1F           *fhRecoJetPt;
+   TH1F		  *fhRecoJetEta;
+   TH1F		  *fhRecoJetPhi;
+   TH1F		  *D_Pt_sig;
+   TH1F		  *D_Pt_bkg;
+   TH1F		  *D_Eta_sig;
+   TH1F		  *D_Eta_bkg;
+   TH1F		  *D_Phi_sig;
+   TH1F		  *D_Phi_bkg;
+   TH1F		  *DsvpvDist_sig;
+   TH1F		  *DsvpvDist_bkg;
+   TH1F		  *Dalpha_sig;
+   TH1F		  *Dalpha_bkg;
+   TH1F		  *Dchi2cl_sig;
+   TH1F		  *Dchi2cl_bkg;
+   TH1F		  *Dtrk1_Pt_sig;
+   TH1F		  *Dtrk1_Pt_bkg;
+   TH1F		  *Dtrk2_Pt_sig;
+   TH1F		  *Dtrk2_Pt_bkg;
+   TH1F		  *Dtrk1_Eta_sig;
+   TH1F		  *Dtrk1_Eta_bkg;
+   TH1F		  *Dtrk2_Eta_sig;
+   TH1F		  *Dtrk2_Eta_bkg;
+   TH1F		  *Delta_Phi;
 
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -1023,7 +1046,31 @@ void djet::Init(TTree *tree)
    fChain->SetBranchAddress("Gtk2y", &Gtk2y, &b_Gtk2y);
    fChain->SetBranchAddress("Gtk2phi", &Gtk2phi, &b_Gtk2phi);
   
-   fhRecoJetPt=new TH1F("fhRecoJetPt","fhRecoJetPt",1000,0,200);
+   fhRecoJetPt=new TH1F("fhRecoJetPt","fhRecoJetPt",200,0,200);
+   fhRecoJetEta=new TH1F("fhRecoJetEta","fhRecoJetEta",100,-3,3);
+   fhRecoJetPhi=new TH1F("fhRecoJetPhi","fhRecoJetPhi",100,-4,4);
+   D_Pt_sig=new TH1F("D_Pt_sig","D_Pt_sig",200,0,200);
+   D_Pt_bkg=new TH1F("D_Pt_bkg","D_Pt_bkg",200,0,200);
+   D_Eta_sig=new TH1F("D_Eta_sig","D_Eta_sig",200,-3,3);
+   D_Eta_bkg=new TH1F("D_Eta_bkg","D_Eta_bkg",200,-3,3);
+   D_Phi_sig=new TH1F("D_Phi_sig","D_Phi_sig",200,-4,4);
+   D_Phi_bkg=new TH1F("D_Phi_bkg","D_Phi_bkg",200,-4,4);
+   DsvpvDist_sig=new TH1F("DsvpvDist_sig","DsvpvDist_sig",200,0,3);
+   DsvpvDist_bkg=new TH1F("DsvpvDist_bkg","DsvpvDist_bkg",200,0,3);
+   Dalpha_sig=new TH1F("Dalpha_sig","Dalpha_sid",200,-1,1);
+   Dalpha_bkg=new TH1F("Dalpha_bkg","Dalpha_bkg",200,-1,1);
+   Dchi2cl_sig=new TH1F("Dchi2cl_sig","Dchi2cl_sig",200,0,1);
+   Dchi2cl_bkg=new TH1F("Dchi2cl_bkg","Dchi2cl_bkg",200,0,1);
+   Dtrk1_Pt_sig=new TH1F("Dtrk1_Pt_sig","Dtrk1_Pt_sig",200,0,200);
+   Dtrk1_Pt_bkg=new TH1F("Dtrk1_Pt_bkg","Dtrk1_Pt_bkg",200,0,200);
+   Dtrk2_Pt_sig=new TH1F("Dtrk2_Pt_sig","Dtrk2_Pt_bkg",200,0,200);
+   Dtrk2_Pt_bkg=new TH1F("Dtrk2_Pt_bkg","Dtrk2_Pt_bkg",200,0,200);
+   Dtrk1_Eta_sig=new TH1F("Dtrk1_Eta_sig","Dtrk1_Eta_sig",200,-3,3);
+   Dtrk1_Eta_bkg=new TH1F("Dtrk1_Eta_bkg","Dtrk1_Eta_bkg",200,-3,3);
+   Dtrk2_Eta_sig=new TH1F("Dtrk2_Eta_sig","Dtrk2_Eta_sig",200,-3,3);
+   Dtrk2_Eta_bkg=new TH1F("Dtrk2_Eta_bkg","Dtrk2_Eta_bkg",200,-3,3);
+   Delta_Phi=new TH1F("Delta_Phi","Delta_Phi",200,-7,7);
+
    Notify();
 }
 
