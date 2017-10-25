@@ -18,7 +18,10 @@ void mcqa(){
 	dataplots.insert(dataplots.end(),
 		{"PVx",
 		"PVy",
-		"PVz"});
+		"PVz",
+		"BSx",
+		"BSy",
+		"BSz"});
 	std::vector<TString> fplots;
 	fplots.insert(fplots.end(),
 		{"D_Pt_sig",
@@ -50,8 +53,7 @@ void mcqa(){
 	for(int i=0;i<fhist.size();i++){		
 		TH1F *h = fhist[i];
 		Double_t size = h->GetEntries();
-		h->Scale(1./size);
-		cout << h->Integral() << endl;}
+		h->Scale(1./size);}
 
 	std::vector<TString> fnames;
 	fnames.insert(fnames.end(),
@@ -72,7 +74,10 @@ void mcqa(){
 	datanames.insert(datanames.end(),
 		{"PVx",
 		"PVy",
-		"PVz"});
+		"PVz",
+		"BSx",
+		"BSy",
+		"BSz"});
 	
 	gStyle->SetOptStat(0);	
 
@@ -113,8 +118,8 @@ void mcqa(){
 		}
 	}
 
-	TCanvas *pv = new TCanvas("Primary Vertex","Primary Vertex",900,300);
-	pv->Divide(3,1,.01,.01);
+	TCanvas *pv = new TCanvas("Vertex & Beamspot","Vertex & Beamspot",900,600);
+	pv->Divide(3,2,.01,.01);
 
 	gStyle->SetOptFit(0111);
 
@@ -122,7 +127,7 @@ void mcqa(){
 	{
 		pv->cd(i+1);
 		t->Draw(dataplots[i]);
-		t->Fit("gaus",dataplots[i]);
+		if(i<3) t->Fit("gaus",dataplots[i]);
 	}
 	fulld->SaveAs("d_reco.gif");
 	dtrk->SaveAs("d_trk.gif");
